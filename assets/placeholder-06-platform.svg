@@ -1,33 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840" fill="none">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="840" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#64748b"/>
-      <stop offset="1" stop-color="#3b82f6"/>
-    </linearGradient>
-    <radialGradient id="r" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(220 140) rotate(35) scale(420 300)">
-      <stop stop-color="white" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="white" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="1200" height="840" rx="44" fill="#0f172a"/>
-  <rect x="18" y="18" width="1164" height="804" rx="30" fill="url(#g)" opacity="0.88"/>
-  <rect x="18" y="18" width="1164" height="804" rx="30" fill="url(#r)"/>
-  <circle cx="1020" cy="130" r="88" fill="white" fill-opacity="0.08"/>
-  <circle cx="135" cy="725" r="115" fill="white" fill-opacity="0.07"/>
-  <rect x="84" y="92" width="182" height="42" rx="21" fill="white" fill-opacity="0.15"/>
-  <text x="175" y="120" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="19" font-weight="700" fill="white">作品展示占位图</text>
-  <text x="84" y="300" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="72" font-weight="800" fill="white">平台主页展示</text>
-  <text x="84" y="356" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="28" font-weight="500" fill="rgba(255,255,255,0.9)">Bilibili / LibLibAI / eSheep</text>
-  <text x="84" y="428" font-family="Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="22" font-weight="500" fill="rgba(255,255,255,0.82)">当前为风格占位，不代表真实个人作品</text>
-  <g opacity="0.92">
-    <rect x="84" y="520" width="312" height="176" rx="24" fill="rgba(255,255,255,0.14)"/>
-    <rect x="428" y="520" width="312" height="176" rx="24" fill="rgba(255,255,255,0.10)"/>
-    <rect x="772" y="520" width="312" height="176" rx="24" fill="rgba(255,255,255,0.12)"/>
-    <rect x="116" y="552" width="248" height="20" rx="10" fill="rgba(255,255,255,0.62)"/>
-    <rect x="460" y="552" width="248" height="20" rx="10" fill="rgba(255,255,255,0.46)"/>
-    <rect x="804" y="552" width="248" height="20" rx="10" fill="rgba(255,255,255,0.56)"/>
-    <rect x="116" y="590" width="168" height="16" rx="8" fill="rgba(255,255,255,0.36)"/>
-    <rect x="460" y="590" width="168" height="16" rx="8" fill="rgba(255,255,255,0.28)"/>
-    <rect x="804" y="590" width="168" height="16" rx="8" fill="rgba(255,255,255,0.32)"/>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#334155"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+<rect width="1200" height="840" rx="40" fill="#0f172a"/><rect x="18" y="18" width="1164" height="804" rx="28" fill="url(#bg)"/>
+<text x="78" y="92" fill="white" font-family="Microsoft YaHei, Arial" font-size="48" font-weight="800">平台主页 / 内容展示 · 效果示意</text>
+<g transform="translate(98,184)">
+  <rect width="1004" height="536" rx="34" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)"/>
+  <rect x="42" y="42" width="920" height="84" rx="24" fill="rgba(255,255,255,0.14)"/>
+  <circle cx="98" cy="84" r="28" fill="#dbeafe"/>
+  <rect x="146" y="64" width="180" height="18" rx="9" fill="#e2e8f0" opacity="0.8"/>
+  <rect x="146" y="92" width="120" height="14" rx="7" fill="#cbd5e1" opacity="0.7"/>
+  <g transform="translate(42,158)">
+    <rect width="268" height="320" rx="24" fill="#dbeafe" opacity="0.88"/>
+    <rect x="318" width="268" height="320" rx="24" fill="#bfdbfe" opacity="0.88"/>
+    <rect x="636" width="268" height="320" rx="24" fill="#93c5fd" opacity="0.88"/>
   </g>
+</g>
 </svg>
