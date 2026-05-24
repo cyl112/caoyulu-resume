@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>曹宇露｜AIGC简历与作品集</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-2: #10182f;
+      --panel: rgba(14, 23, 43, 0.78);
+      --panel-strong: #111a31;
+      --text: #eef2ff;
+      --muted: #9aa6c3;
+      --line: rgba(148, 163, 184, 0.18);
+      --accent: #6ea8ff;
+      --accent-2: #93c5fd;
+      --glow: rgba(110, 168, 255, 0.22);
+      --success: #7dd3fc;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(59,130,246,0.24), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(56,189,248,0.18), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(14,165,233,0.10), transparent 26%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      line-height: 1.68;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 12, 25, 0.48);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar-inner {
+      min-height: 68px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .hero {
+      padding: 56px 0 30px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(17,26,49,0.94), rgba(10,18,35,0.82));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr;
+      gap: 26px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -45% auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(110,168,255,0.18), transparent 62%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(110,168,255,0.10);
+      border: 1px solid rgba(110,168,255,0.18);
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      color: var(--accent-2);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .hero-desc {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      color: #08111f;
+      background: linear-gradient(135deg, #93c5fd, #dbeafe);
+      box-shadow: 0 18px 40px rgba(147,197,253,0.22);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .meta-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-block strong {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .meta-block span {
+      font-size: 15px;
+      color: var(--text);
+      word-break: break-all;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dbeafe;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 16px 0 20px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: #d7deef;
+    }
+
+    .list li + li { margin-top: 10px; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #eaf2ff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(180deg, #93c5fd, rgba(147,197,253,0));
+    }
+
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .timeline-head strong {
+      font-size: 20px;
+    }
+
+    .timeline-head span {
+      color: var(--accent-2);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .timeline-role {
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .project-tags span {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #dbeafe;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .portfolio-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .portfolio-card .badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(110,168,255,0.12);
+      border: 1px solid rgba(110,168,255,0.22);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .portfolio-card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .portfolio-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .artboard {
+      margin-top: auto;
+      min-height: 110px;
+      border-radius: 18px;
+      border: 1px dashed rgba(147,197,253,0.28);
+      background:
+        linear-gradient(135deg, rgba(37,99,235,0.10), rgba(56,189,248,0.06)),
+        rgba(255,255,255,0.02);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #d7e8ff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 14px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+    }
+
+    .footer {
+      padding: 24px 0 56px;
+    }
+
+    .footer-card {
+      background: linear-gradient(145deg, rgba(17,26,49,0.96), rgba(7,12,25,0.96));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-card strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .footer-card p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .footer-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-card,
+      .grid-2,
+      .project-grid,
+      .portfolio-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+      .hero-stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .wrap { width: min(var(--max), calc(100% - 20px)); }
+      .topbar { position: static; }
+      .hero { padding-top: 24px; }
+      .hero-card, .card, .timeline-item, .project-card, .portfolio-card, .footer-card { padding: 20px; }
+      .nav { gap: 10px; }
+      .nav a { font-size: 13px; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .btn { width: 100%; }
+      .hero-actions, .footer-actions { flex-direction: column; }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .topbar, .hero-actions, .footer-actions { display: none; }
+      .hero-card, .card, .timeline-item, .project-card, .portfolio-card, .footer-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #111;
+      }
+      .hero-subtitle, .section-head p, .timeline-role, .project-card p, .portfolio-card p, .footer-card p, .list, .meta-block span {
+        color: #444 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">曹宇露｜简历与作品集</div>
+      <nav class="nav">
+        <a href="#about">个人优势</a>
+        <a href="#experience">工作经历</a>
+        <a href="#projects">代表项目</a>
+        <a href="#portfolio">作品展示</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-card">
+        <div>
+          <span class="eyebrow">AIGC Resume / Portfolio</span>
+          <h1>曹宇露</h1>
+          <p class="hero-subtitle">ComfyUI 工作流开发｜AIGC 应用落地｜AI 视觉方案执行</p>
+          <p class="hero-desc">
+            主要方向是 ComfyUI 工作流开发与 AIGC 视觉应用落地。做过 AI 换装、AI 写真、虚拟人像、电商产品图等项目，
+            也负责过 LoRA 模型训练、环境部署、插件排错、流程跑通和内部培训。我的核心价值不是只会跑工具，
+            而是能把方案真正推到业务使用端。
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>3段</strong>
+              <span>真实项目 / 工作经历</span>
+            </div>
+            <div class="stat">
+              <strong>4类+</strong>
+              <span>AIGC 应用场景</span>
+            </div>
+            <div class="stat">
+              <strong>200万+</strong>
+              <span>服务业务相关账号粉丝</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portfolio">查看作品展示区</a>
+            <a class="btn btn-secondary" href="#experience">查看工作经历</a>
+          </div>
+        </div>
+        <aside class="meta-panel" id="contact">
+          <div class="meta-block">
+            <strong>手机</strong>
+            <span>15538976520</span>
+          </div>
+          <div class="meta-block">
+            <strong>微信</strong>
+            <span>15538976520</span>
+          </div>
+          <div class="meta-block">
+            <strong>邮箱</strong>
+            <span>1372671943@qq.com</span>
+          </div>
+          <div class="meta-block">
+            <strong>年龄 / 学历</strong>
+            <span>22岁 / 大专</span>
+          </div>
+          <div class="meta-block">
+            <strong>求职意向</strong>
+            <span>ComfyUI 工作流开发 / AIGC 应用落地 / AI 特效 / AI 视觉方案执行</span>
+          </div>
+          <div class="chip-row">
+            <span class="chip">AI 换装</span>
+            <span class="chip">LoRA 训练</span>
+            <span class="chip">电商视觉</span>
+            <span class="chip">工作流交付</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <div class="wrap grid-2">
+        <div class="card">
+          <div class="section-head">
+            <h2>个人优势</h2>
+            <p>不是只会用工具，而是能把流程做成可用方案</p>
+          </div>
+          <ul class="list">
+            <li>可独立完成 ComfyUI 工作流搭建、插件安装、环境部署与报错排查。</li>
+            <li>具备 AI 换装、AI 写真、虚拟人像、电商产品图等实际落地经验。</li>
+            <li>做过 LoRA 模型训练、整套流程搭建与内部培训，能推动方案从测试走向实际使用。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="section-head">
+            <h2>核心技能</h2>
+            <p>技术、场景、交付三块都能接</p>
+          </div>
+          <div class="skills">
+            <span class="skill">ComfyUI</span>
+            <span class="skill">Stable Diffusion</span>
+            <span class="skill">MidJourney</span>
+            <span class="skill">GPT-SoVITS v2</span>
+            <span class="skill">LoRA 模型训练</span>
+            <span class="skill">工作流开发</span>
+            <span class="skill">节点调试</span>
+            <span class="skill">插件兼容处理</span>
+            <span class="skill">环境部署</span>
+            <span class="skill">AI 换装</span>
+            <span class="skill">AI 写真</span>
+            <span class="skill">虚拟人像</span>
+            <span class="skill">电商产品图</span>
+            <span class="skill">内部培训</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>工作经历</h2>
+          <p>能证明你做过真实业务，而不是只做过演示图</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-head">
+              <strong>电商项目合作</strong>
+              <span>2025.09 - 2026.02</span>
+            </div>
+            <div class="timeline-role">AI 女装方向项目合作 / ComfyUI 工作流开发</div>
+            <ul class="list">
+              <li>与合伙人组成小团队，以项目合作方式服务电商老板，推进 AI 女装方向业务落地。</li>
+              <li>面向 10 人左右的小型电商团队，负责整套 AI 视觉流程的工作流开发、流程跑通与实际应用支持。</li>
+              <li>围绕 AI 换装与商品视觉需求，推动方案进入日常使用，并配合业务节奏持续优化。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-head">
+              <strong>杭州大昭电子商务公司</strong>
+              <span>2025.03 - 2025.08</span>
+            </div>
+            <div class="timeline-role">ComfyUI 工作流开发</div>
+            <ul class="list">
+              <li>负责电商女装方向的 ComfyUI 工作流开发，推进 AI 换装在业务中的实际应用。</li>
+              <li>负责 LoRA 服装模型训练与应用，优化服装展示效果，减少实拍依赖。</li>
+              <li>支持老款商品进行新场景、新搭配重做，提升旧款商品的再次展示与转化机会。</li>
+              <li>完成技术方案后，负责公司内部员工培训，协助团队持续使用。</li>
+              <li>服务电商女装业务，相关平台账号“尚静”全网粉丝 200万+。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-head">
+              <strong>河南蟹黄包科技有限公司</strong>
+              <span>2024.01 - 2024.08</span>
+            </div>
+            <div class="timeline-role">ComfyUI 搭建师 / 讲师</div>
+            <ul class="list">
+              <li>负责 ComfyUI 工作流搭建、环境部署、插件安装与异常排查。</li>
+              <li>参与自媒体+AI、AI 摆摊、ComfyUI 课程等项目的执行与落地支持。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>代表项目</h2>
+          <p>把你的能力拆成可理解的项目场景</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>电商女装 AI 换装工作流</h3>
+            <p>结合 LoRA 服装模型训练优化上身效果，减少模特与场景拍摄依赖，适配电商女装视觉更新。</p>
+            <div class="project-tags">
+              <span>AI 换装</span>
+              <span>LoRA 训练</span>
+              <span>电商场景</span>
+            </div>
+          </article>
+          <article class="project-card">
+            <h3>AI 写真人像工作流</h3>
+            <p>实现原图转 AI 摄影、光影优化、人物润色与风格化输出，适合写真内容生产与展示。</p>
+            <div class="project-tags">
+              <span>写真生成</span>
+              <span>光影优化</span>
+              <span>风格输出</span>
+            </div>
+          </article>
+          <article class="project-card">
+            <h3>虚拟人像摄影工作流</h3>
+            <p>支持换装、发型、风格切换与细节优化，用于虚拟形象内容生成和视觉创作。</p>
+            <div class="project-tags">
+              <span>虚拟人像</span>
+              <span>风格迁移</span>
+              <span>细节优化</span>
+            </div>
+          </article>
+          <article class="project-card">
+            <h3>电商产品图工作流</h3>
+            <p>围绕电商展示需求优化产品图生成效率与视觉效果，适合商品素材快速更新。</p>
+            <div class="project-tags">
+              <span>商品图</span>
+              <span>视觉提效</span>
+              <span>素材生成</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>作品展示区</h2>
+          <p>这版更像正式作品集页面，后面直接把真实图片替换进去就能发</p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <span class="badge">作品位 01</span>
+            <h3>AI 女装换装案例</h3>
+            <p>建议放原图 / 换装结果 / 场景版本，对方一眼就能看到你的商业价值。</p>
+            <div class="artboard">这里放你的真实作品图<br>推荐统一尺寸</div>
+          </article>
+          <article class="portfolio-card">
+            <span class="badge">作品位 02</span>
+            <h3>AI 写真人像案例</h3>
+            <p>建议放对比图，突出光影优化、人物质感和风格控制能力。</p>
+            <div class="artboard">这里放你的真实作品图</div>
+          </article>
+          <article class="portfolio-card">
+            <span class="badge">作品位 03</span>
+            <h3>虚拟人像 / 风格迁移</h3>
+            <p>建议展示多风格结果图，让人看到你不是只会一种效果。</p>
+            <div class="artboard">这里放你的真实作品图</div>
+          </article>
+          <article class="portfolio-card">
+            <span class="badge">作品位 04</span>
+            <h3>电商产品图案例</h3>
+            <p>适合放商品图、氛围图、不同场景图，突出素材更新效率。</p>
+            <div class="artboard">这里放你的真实作品图</div>
+          </article>
+          <article class="portfolio-card">
+            <span class="badge">作品位 05</span>
+            <h3>LoRA 模型 / 流程截图</h3>
+            <p>建议放训练结果、节点流程图或效果图，证明你会做流程，不只是会出图。</p>
+            <div class="artboard">这里放你的真实作品图</div>
+          </article>
+          <article class="portfolio-card">
+            <span class="badge">作品位 06</span>
+            <h3>平台主页 / 内容展示</h3>
+            <p>后面可以补 B站、LibLibAI、eSheep 的链接或截图，增加可信度。</p>
+            <div class="artboard">这里放链接或主页截图</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <div class="card">
+          <div class="section-head">
+            <h2>平台与奖项</h2>
+            <p>简历可信度的补强项</p>
+          </div>
+          <ul class="list">
+            <li>在 LibLibAI、eSheep 发布工作流及 LoRA 模型；B站 UP 主“宇创AI”，持续发布 AIGC 相关内容。</li>
+            <li>字节跳动「炉米 Lumi AI 共创计划」相关作品上线豆包 AI 特效区、剪映 AI 特效区。</li>
+            <li>获得奖项：剪映 × 炉米 Lumi AI 创想家、剪映优秀 AIGC 创作者。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="section-head">
+            <h2>教育背景</h2>
+            <p>基础信息</p>
+          </div>
+          <ul class="list">
+            <li>南阳科技职业学院｜数字化设计与制作技术｜2021.06 - 2024.06</li>
+            <li>高级钳工证书</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-card">
+        <div>
+          <strong>这版已经更像正式求职作品集页了。</strong>
+          <p>现在真正决定效果的，不是继续改样式，而是你把真实作品图、平台链接和代表案例补进去。补完以后，这页比发 Word 更有说服力。</p>
+        </div>
+        <div class="footer-actions">
+          <a class="btn btn-primary" href="tel:15538976520">电话联系</a>
+          <a class="btn btn-secondary" href="mailto:1372671943@qq.com">发送邮件</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
